@@ -7,7 +7,7 @@ const initialState = {
 }
 
 export default handleActions({
-  [actions.postAddSuccess]: (state, action) => ({
+  [actions.postAdd]: (state, action) => ({
     ...state,
     list: [ ...state.list, action.payload ]
   })

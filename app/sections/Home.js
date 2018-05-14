@@ -6,11 +6,14 @@ import Typography from 'material-ui/Typography';
 
 import Base from '../components/Base'
 import NewPost from '../posts/NewPost'
+import Posts from '../posts/Posts'
+
 
 const Home = props => {
   return (
     <Base>
       <NewPost />
+      <Posts />
     </Base>
   )
 }
