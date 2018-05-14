@@ -120,3 +120,52 @@
     at TCP.done [as _onclose] (_tls_wrap.js:356:7)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2018-05-14T02:24:46.413Z] ----------------------------------------------------------------------
+[debug] [2018-05-14T02:24:46.415Z] Command:       /Users/ext.jbuitron/.nvm/versions/node/v8.11.1/bin/node /Users/ext.jbuitron/.nvm/versions/node/v8.11.1/bin/firebase serve
+[debug] [2018-05-14T02:24:46.415Z] CLI Version:   3.18.4
+[debug] [2018-05-14T02:24:46.415Z] Platform:      darwin
+[debug] [2018-05-14T02:24:46.415Z] Node Version:  v8.11.1
+[debug] [2018-05-14T02:24:46.415Z] Time:          Sun May 13 2018 21:24:46 GMT-0500 (-05)
+[debug] [2018-05-14T02:24:46.415Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-14T02:24:46.422Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-14T02:24:46.422Z] > authorizing via signed-in user
+[debug] [2018-05-14T02:24:46.424Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-05-14T02:24:46.424Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/tNI_Yrr4lRPNJcQO2TuocbX0hxnTzbpuQYWap7YV_sw',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun May 13 2018 21:24:46 GMT-0500 (-05)
+[debug] [2018-05-14T02:24:47.272Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-14T02:24:47.288Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/laboratoria-419ca  
+  
+ Sun May 13 2018 21:24:47 GMT-0500 (-05)
+[debug] [2018-05-14T02:24:48.350Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-14T02:24:48.351Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/laboratoria-419ca/tokens  
+  
+ Sun May 13 2018 21:24:48 GMT-0500 (-05)
+[debug] [2018-05-14T02:24:49.308Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-14T02:24:49.309Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/laboratoria-419ca  
+  
+ Sun May 13 2018 21:24:49 GMT-0500 (-05)
+[debug] [2018-05-14T02:24:50.297Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/ext.jbuitron/personal/projects/inter/laboratoria'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-05-14T02:24:50.698Z] Fetching environment
+[debug] [2018-05-14T02:24:50.700Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/87445228632:getServerAppConfig  
+  
+ Sun May 13 2018 21:24:50 GMT-0500 (-05)
+[debug] [2018-05-14T02:24:50.701Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/87445228632/clients/_:getWebAppConfig  
+  
+ Sun May 13 2018 21:24:50 GMT-0500 (-05)
+[debug] [2018-05-14T02:24:52.766Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-14T02:24:52.766Z] Starting @google-cloud/functions-emulator
+[debug] [2018-05-14T02:24:52.848Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[debug] [2018-05-14T02:24:53.819Z] Parsing function triggers

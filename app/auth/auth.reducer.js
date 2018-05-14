@@ -1,23 +1,19 @@
+import { handleActions } from 'redux-actions'
+
+import * as actions from './auth.actions'
 
 const initialState = {
 	isAuthenticated: false
 }
 
-const authReducer = (state = initialState , action) => {
-  switch (action.type) {
-    case 'AUTH_SUCCESS':
-      return {
-        ...state,
-        isAuthenticated: true
-      }
-    case 'AUTH_FAIL':
-      return {
-        ...state,
-        isAuthenticated: false
-      }
-    default:
-      return state
-  }
-}
+export default handleActions({
+  [actions.authSuccess]: (state, action) => ({
+    ...state,
+    isAuthenticated: true
+  }),
+  [actions.authFail]: (state, action) => ({
+    ...state,
+    isAuthenticated: false
+  })
+}, initialState)
 
-export default authReducer

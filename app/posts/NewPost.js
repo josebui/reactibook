@@ -8,26 +8,34 @@ import {
 	CardContent,
 	CardActions,
 } from 'material-ui'
+import { connect } from 'react-redux'
 
+import * as actions from './posts.actions'
+
+const postOptions = [{
+  value: 'friends',
+  label: 'Friends'
+}, {
+  value: 'public',
+  label: 'Public'
+}]
 
 const PostOptions = props => (
 	<Select
-		value=""
-		inputProps={{
-			name: 'age',
-			id: 'age-simple',
-		}}
+		value="friends"
 	>
-		<MenuItem value="">
-			<em>None</em>
-		</MenuItem>
-		<MenuItem value={10}>Ten</MenuItem>
-		<MenuItem value={20}>Twenty</MenuItem>
-		<MenuItem value={30}>Thirty</MenuItem>
+    {postOptions.map(option => (
+		  <MenuItem value={option.value}>{option.label}</MenuItem>
+    ))}
 	</Select>
 )
 
 const NewPost = props => {
+
+  const onPublish = () => {
+  
+  }
+
   return (
 		<Card>
 			<CardContent>
@@ -45,4 +53,6 @@ const NewPost = props => {
   )
 }
 
-export default NewPost
+export default connect(null, dispatch => ({
+  addPost: post => dispatch(actions.postAdd(post))
+}))(NewPost)

@@ -3,15 +3,8 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { Button } from 'material-ui'
 
+import { authSuccess, authFail } from './auth.actions'
 import Base from '../components/Base'
-
-const authSuccess = () => ({
-  type: 'AUTH_SUCCESS'
-})
-
-const authFail = () => ({
-  type: 'AUTH_FAIL'
-})
 
 class LoginContainer extends React.Component {
   render() {
@@ -32,6 +25,5 @@ class LoginContainer extends React.Component {
 export default connect(null, dispatch => ({
   login: () => {
     dispatch(authSuccess())
-    dispatch(push('/'))
   }
 }))(LoginContainer)
