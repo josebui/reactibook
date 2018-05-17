@@ -16,14 +16,14 @@ import * as constants from './posts.constants'
 
 
 const VisibilityOptions = props => (
-	<Select
+  <Select
     value={props.value}
     onChange={props.onChange}
-	>
+  >
     {constants.VISIBILITY.map(option => (
-		  <MenuItem value={option.value}>{option.label}</MenuItem>
+      <MenuItem value={option.value}>{option.label}</MenuItem>
     ))}
-	</Select>
+  </Select>
 )
 
 class PostForm extends React.Component {
@@ -48,8 +48,8 @@ class PostForm extends React.Component {
     const { description } = data
 
     const newErrors = {
-        description: null,
-        visibility: null
+      description: null,
+      visibility: null
     }
     if (!description) {
       newErrors.description = 'Ingresa una descripcion'
@@ -114,7 +114,7 @@ class PostForm extends React.Component {
           <VisibilityOptions
             value={state.data.visibility}
             onChange={onVisibilityChange}/>			
-          <Button onClick={onPublish}>Publicar</Button>
+          <Button onClick={onPublish}>{props.saveLabel || 'Publicar'}</Button>
           {
             props.cancelEnabled
               ? <Button onClick={props.onCancel}>Cancelar</Button>

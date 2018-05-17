@@ -5,7 +5,7 @@ import _ from 'lodash'
 import * as actions from './posts.actions'
 
 const initialState = {
-	list: [],
+  list: [],
   filters: {},
   filteredList: []
 }

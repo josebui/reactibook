@@ -12,18 +12,18 @@ import Home from './sections/Home'
 
 
 const store = createStore(
-	rootReducer, /* preloadedState, */
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  rootReducer, /* preloadedState, */
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 const history = createHistory()
 
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-			<Switch>
-				<PrivateRoute exact path="/timeline" component={Home} />
-				<PrivateRoute exact path="/" component={Home} />
-			</Switch>
+      <Switch>
+	    <PrivateRoute exact path="/timeline" component={Home} />
+		<PrivateRoute exact path="/" component={Home} />
+	  </Switch>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')

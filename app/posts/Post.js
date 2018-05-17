@@ -42,6 +42,7 @@ const PostEdit = props => {
       data={{ id, description, visibility }}
       cancelEnabled={true}
       onCancel={() => props.onChangeMode('view')}
+      saveLabel="Guardar"
       savePost={props.updatePost}/> 
   )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import {
-	Button,
-	Card,
-	CardContent,
-	CardActions,
+  Button,
+  Card,
+  CardContent,
+  CardActions,
 } from 'material-ui'
 import { connect } from 'react-redux'
 
