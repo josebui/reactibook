@@ -9,26 +9,8 @@ import { connect } from 'react-redux'
 
 import * as actions from './posts.actions'
 import * as constants from './posts.constants'
+import Post from './Post'
 
-
-const Post = props => {
-  const onRemove = () => {
-    if (!confirm(`Deseas eleminar este post: ${props.description}`)) {
-      return
-    }
-    props.removePost(props.id)
-  }
-  return (
-    <Card style={{ marginTop: 10 }}>
-      <CardContent>
-        {props.description}
-      </CardContent>
-      <CardActions>
-        <Button onClick={onRemove}>Borrar</Button>
-      </CardActions>
-    </Card>
-  )
-}
 
 const Filters = props => {
   const onVisibilityChange = option => () => {
@@ -58,6 +40,7 @@ class Posts  extends React.Component {
         {props.filteredList.map(post => (
           <Post {...post} 
             removePost={props.removePost}
+            updatePost={props.updatePost}
           />
         ))}
       </div>
@@ -69,5 +52,6 @@ export default connect(state => ({
   filteredList: state.posts.filteredList
 }), dispatch => ({
   removePost: postId => dispatch(actions.removePost(postId)),
+  updatePost: post => dispatch(actions.updatePost(post)),
   addFilter: filter => dispatch(actions.addFilter(filter))
 }))(Posts)

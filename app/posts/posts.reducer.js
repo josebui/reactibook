@@ -32,6 +32,22 @@ export default handleActions({
       filteredList
     })
   },
+  [actions.updatePost]: (state, action) => {
+    const newData = action.payload
+    const list = state.list.map(post => {
+      if (post.id !== newData.id) {
+        return post
+      }
+      return newData
+    })
+    
+    const filteredList = filterList(list, state.filters) 
+    return ({
+      ...state,
+      list,
+      filteredList
+    })
+  },
   [actions.removePost]: (state, action) => {
     const id = action.payload
     const list = state.list.filter(post => post.id !== id )
