@@ -9,23 +9,18 @@ import {
 	CardActions,
 } from 'material-ui'
 import { connect } from 'react-redux'
+import _ from 'lodash'
 
 import * as actions from './posts.actions'
+import * as constants from './posts.constants'
 
-const postOptions = [{
-  value: 'friends',
-  label: 'Friends'
-}, {
-  value: 'public',
-  label: 'Public'
-}]
 
-const PostOptions = props => (
+const VisibilityOptions = props => (
 	<Select
-    value="friends"
+    value={props.value}
     onChange={props.onChange}
 	>
-    {postOptions.map(option => (
+    {constants.VISIBILITY.map(option => (
 		  <MenuItem value={option.value}>{option.label}</MenuItem>
     ))}
 	</Select>
@@ -36,23 +31,67 @@ class NewPost extends React.Component {
     super(props)
 
     this.state = {
-      description: '',
-      options: ''
+      data: {
+        description: '',
+        visibility: 'friends'
+      },
+      errors: {
+        description: null,
+        visibility: null
+      }
     }
+  }
+
+  validate() {
+    const { data, errors } = this.state
+    const { description } = data
+
+    const newErrors = {
+        description: null,
+        visibility: null
+    }
+    if (!description) {
+      newErrors.description = 'Ingresa una descripcion'
+    }
+
+    this.setState({ errors: newErrors })
+
+    return newErrors
   }
 
   render() {
     const { state, props } = this
+    const { errors, data } = state
     const onPublish = () => {
-      props.addPost(state)
+      const errors = this.validate()
+      if (_.some(errors)) {
+        return
+      }
+      props.addPost(data)
+      this.setState({
+        data: {
+          description: '',
+          visibility: 'friends'
+        }
+      })
     }
 
     const onDescriptionChange = (event) => {
-      this.setState({ description: event.target.value })
+      this.setState({
+        data: {
+          ...state.data,
+          description: event.target.value
+        }
+      })
     }
 
-    const onPostOptionsChange = (event) => {
-      this.setState({ options: event.target.value })
+    const onVisibilityChange = (event) => {
+      this.setState({
+        data: {
+          ...state.data,
+          visibility: event.target.value
+        }
+      })
     }
 
     return (
@@ -62,15 +101,18 @@ class NewPost extends React.Component {
             <div>
               <TextField
                 label="Que esta pasando?"
+                value={state.data.description}
                 multiline
                 rows={4}
+                error={!_.isEmpty(errors) && errors.description}
                 onChange={onDescriptionChange}/>      
             </div>
           </form>
         </CardContent>
         <CardActions>
-          <PostOptions
-            onChange={onPostOptionsChange}/>			
+          <VisibilityOptions
+            value={state.data.visibility}
+            onChange={onVisibilityChange}/>			
           <Button onClick={onPublish}>Publicar</Button>
         </CardActions>
       </Card>
@@ -79,5 +121,5 @@ class NewPost extends React.Component {
 }
 
 export default connect(null, dispatch => ({
-  addPost: post => dispatch(actions.postAdd(post))
+  addPost: post => dispatch(actions.addPost(post))
 }))(NewPost)
