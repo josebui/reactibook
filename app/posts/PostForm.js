@@ -104,6 +104,7 @@ class PostForm extends React.Component {
                 label="Que esta pasando?"
                 value={state.data.description}
                 multiline
+                fullWidth
                 rows={4}
                 error={!_.isEmpty(errors) && errors.description}
                 onChange={onDescriptionChange}/>      
