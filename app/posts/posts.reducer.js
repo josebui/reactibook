@@ -1,8 +1,11 @@
 import { handleActions } from 'redux-actions'
 import uuid from 'uuid/v4' 
 import _ from 'lodash'
+import getUrls from 'get-urls'
+import isImage from 'is-image'
 
 import * as actions from './posts.actions'
+
 
 const initialState = {
   list: [],
@@ -19,11 +22,20 @@ const filterList = (list, filters) => {
   return filteredList
 }
 
+const getImages = text => {
+  const urls = getUrls(text)
+  const images = Array.from(urls).filter(url => isImage(url))
+  return images
+}
+
 export default handleActions({
   [actions.addPost]: (state, action) => {
+    const post = action.payload
+    const images = getImages(post.description)
     const list = [ ...state.list, {
-      ...action.payload,
-      id: uuid()
+      ...post,
+      id: uuid(),
+      images
     }]
     const filteredList = filterList(list, state.filters) 
     return ({

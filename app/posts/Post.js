@@ -8,7 +8,16 @@ import {
 } from 'material-ui'
 
 import PostForm from './PostForm'
+import ImageGridList from '../components/ImageGridList'
 
+
+const Images = props => {
+  return (
+    <ImageGridList
+      tiles={props.images.map(image => ({ img: image}))}
+    />
+  )
+}
 
 const PostView = props => {
     const onRemove = () => {
@@ -26,6 +35,10 @@ const PostView = props => {
           <Typography color="textSecondary">
             {props.description}
           </Typography>
+          { _.isEmpty(props.images)
+            ? null
+              : <Images images={props.images} />
+          }
         </CardContent>
         <CardActions>
           <Button onClick={onRemove}>Borrar</Button>
